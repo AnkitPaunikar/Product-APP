@@ -24,7 +24,7 @@ const DisplayProductDetails = () => {
         <div key={item.id} onClick={() => setSelectedItem(item)}>
           <h3>{item.title}</h3>
           <p>{item.description}</p>
-          {/* Render other details as needed */}
+        
         </div>
       ))}
     </div>
