@@ -4,9 +4,9 @@ import LeftPaneDisplay from "./component/leftpane";
 import DisplayProductDetails from "./component/displayProductDetail";
 
 interface ProductContextType {
-  dataleft: any[];
-  selectedItem: any;
-  setSelectedItem: React.Dispatch<React.SetStateAction<any>>;
+  dataleft: string[];
+  selectedItem: string | null;
+  setSelectedItem: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
 export const ProductContext = createContext<ProductContextType>({
@@ -16,8 +16,8 @@ export const ProductContext = createContext<ProductContextType>({
 });
 
 const App = () => {
-  const [responseData, setResponseData] = useState([]);
-  const [selectedItem, setSelectedItem] = useState(null);
+  const [responseData, setResponseData] = useState<string[]>([]);
+  const [selectedItem, setSelectedItem] = useState<string | null>(null);
 
   const getdata = async () => {
     try {
