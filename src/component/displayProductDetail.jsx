@@ -2,12 +2,13 @@ import React, { useContext } from "react";
 import { ProductContext } from "../App";
 
 const DisplayProductDetails = () => {
-  const { selectedItem } = useContext(ProductContext);
+  const { dataleft, setSelectedItem, selectedItem } =
+    useContext(ProductContext);
 
   return (
     <div className='DisplayProductDetails'>
-      {selectedItem ? (
-        <>
+      {selectedItem && (
+        <div className='selectedItemDetails'>
           <h2>{selectedItem.title}</h2>
           <p>{selectedItem.description}</p>
           <img src={selectedItem.image} alt={selectedItem.title} />
@@ -17,10 +18,15 @@ const DisplayProductDetails = () => {
             Rating: {selectedItem.rating.rate} ({selectedItem.rating.count}{" "}
             reviews)
           </p>
-        </>
-      ) : (
-        <p>Please select a product to see the details.</p>
+        </div>
       )}
+      {dataleft.map((item) => (
+        <div key={item.id} onClick={() => setSelectedItem(item)}>
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+          {/* Render other details as needed */}
+        </div>
+      ))}
     </div>
   );
 };
